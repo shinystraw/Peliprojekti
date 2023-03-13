@@ -7,10 +7,11 @@ public class PlayerMovement : MonoBehaviour
 
     //Code used from brakeys 2d movement video tutorial 
     [SerializeField] private CharacterController2D controller;
-    [SerializeField] private float speed;
+    [SerializeField] private float runSpeed;
+    [SerializeField] private Animator animator;
+
 
     private float horizontalInput;
-    private float verticalInput;
 
     bool jump;
     bool crouch;
@@ -18,15 +19,20 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        horizontalInput = Input.GetAxis("Horizontal") * speed;
-        verticalInput = Input.GetAxis("Vertical");
+        horizontalInput = Input.GetAxis("Horizontal") * runSpeed;
 
-        if (verticalInput > 0.01)
+         animator.SetFloat("speed", Mathf.Abs(horizontalInput));
+
+        
+        
+        if (Input.GetButtonDown("Jump"))
         {
             jump = true;
+            animator.SetBool("IsJumping", true);
+            Debug.Log("Yes");
         }
 
-        if (verticalInput < -0.01)
+        if (Input.GetButton("Crouch"))
         {
             crouch = true;
         } else
@@ -36,11 +42,20 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
+    public void OnLanding()
+    {
+        animator.SetBool("IsJumping", false);
+        Debug.Log("works");
+    }
+
+    public void WhileCrouching(bool crouching)
+    {
+        animator.SetBool("IsCrouching", crouching);
+    }
+
     private void FixedUpdate()
     {
         controller.Move(horizontalInput * Time.fixedDeltaTime, crouch, jump);
         jump = false;
     }
-
-
 }
