@@ -12,6 +12,7 @@ public class Shooting : MonoBehaviour
     [SerializeField] Transform player;
     [SerializeField] Transform firePoint;
     [SerializeField] GameObject bulletPrefab;
+    [SerializeField] GameObject muzzleFLashPrefab;
     [SerializeField] float fireRate = 0.5f;
     private float nextFire = 0;
     public float bulletForce = 250f;
@@ -68,6 +69,7 @@ public class Shooting : MonoBehaviour
     void ShootProjectile()
     {
         GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        Instantiate(muzzleFLashPrefab, firePoint.position, firePoint.rotation);
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
         rb.AddForce(firePoint.right * bulletForce * Time.fixedDeltaTime, ForceMode2D.Impulse);
     }
