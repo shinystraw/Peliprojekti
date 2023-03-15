@@ -29,7 +29,6 @@ public class PlayerMovement : MonoBehaviour
         {
             jump = true;
             animator.SetBool("IsJumping", true);
-            Debug.Log("Yes");
         }
 
         if (Input.GetButton("Crouch"))
@@ -45,7 +44,6 @@ public class PlayerMovement : MonoBehaviour
     public void OnLanding()
     {
         animator.SetBool("IsJumping", false);
-        Debug.Log("works");
     }
 
     public void WhileCrouching(bool crouching)

@@ -4,16 +4,17 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 {
-
+    Animator animator;
     int maxHealth = 100;
-    SpriteRenderer spriteRenderer;
-
+    LookAtPlayer disableLookOnDeath;
+    EnemyShooting shooting;
     // Start is called before the first frame update
     void Start()
     {
+        shooting= GetComponent<EnemyShooting>();
+        disableLookOnDeath = GetComponent<LookAtPlayer>(); 
         int currentHealth = maxHealth;
-        spriteRenderer= GetComponent<SpriteRenderer>();
-        spriteRenderer.material.color = Color.red;
+        animator = GetComponent<Animator>();
     }
 
     public void TakeDamage(int damage)
@@ -22,7 +23,10 @@ public class Health : MonoBehaviour
 
         if(maxHealth == 0)
         {
-            Destroy(gameObject);
+            shooting.AttackMode(false);
+            disableLookOnDeath.enabled = false;
+            animator.SetTrigger("Death");
+            Destroy(gameObject, 1.5f);
         }
     }
 }
