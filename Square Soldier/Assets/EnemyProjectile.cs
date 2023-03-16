@@ -11,7 +11,7 @@ public class EnemyProjectile : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>(); 
         spriteRenderer = GetComponent<SpriteRenderer>();
-        spriteRenderer.material.color = Color.cyan;
+        spriteRenderer.material.color = Color.magenta;
     }
     private void Update()
     {

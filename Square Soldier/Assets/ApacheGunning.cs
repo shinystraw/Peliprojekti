@@ -7,7 +7,9 @@ public class ApacheGunning : MonoBehaviour
     private Transform target;
     [SerializeField] Transform firePoint;
     [SerializeField] GameObject bulletPrefab;
-    [SerializeField] float bulletForce = 40;
+    [SerializeField] GameObject muzzleFLashPrefab;
+    [SerializeField] float bulletForce = 30;
+    GameObject fx; 
     private Vector3 vectorToTarget;
     private float nextFire = 3;
     bool shoot = false;
@@ -21,6 +23,11 @@ public class ApacheGunning : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(fx != null)
+        {
+            fx.transform.position = firePoint.position;
+        }
+
         RotateTowardsPlayer();
         
         if (Time.time > nextFire)
@@ -48,7 +55,10 @@ public class ApacheGunning : MonoBehaviour
     void ShootProjectile()
     {
         GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        GameObject fx = Instantiate(muzzleFLashPrefab, firePoint.position, firePoint.rotation);
+
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
-        rb.AddForce(vectorToTarget * bulletForce * Time.fixedDeltaTime, ForceMode2D.Impulse);
+        Vector2 offset = new Vector2(vectorToTarget.x + Random.Range(-2f, 2f), vectorToTarget.y);
+        rb.AddForce(offset * bulletForce * Time.fixedDeltaTime, ForceMode2D.Impulse);
     }
 }

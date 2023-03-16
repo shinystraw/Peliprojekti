@@ -6,7 +6,8 @@ public class EnemyShooting : MonoBehaviour
 {
     [SerializeField] Transform firePoint;
     [SerializeField] GameObject bulletPrefab;
-    private float nextFire = 5;
+    [SerializeField] GameObject muzzleFlashPrefab;
+    private float nextFire;
     public float bulletForce = 250f;
     bool attackMode = false;
     bool shoot = false;
@@ -44,6 +45,7 @@ public class EnemyShooting : MonoBehaviour
     void ShootProjectile()
     {
         GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        Instantiate(muzzleFlashPrefab, firePoint.position, firePoint.rotation);
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
         rb.AddForce(firePoint.right * bulletForce * Time.fixedDeltaTime, ForceMode2D.Impulse);
     }
@@ -52,5 +54,6 @@ public class EnemyShooting : MonoBehaviour
     {
         attackMode = toggle;
         animator.SetBool("OnGround", toggle);
+        nextFire = Time.time + 2f;
     }
 }
