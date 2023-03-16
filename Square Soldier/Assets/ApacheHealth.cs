@@ -2,27 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerHealth : MonoBehaviour
+public class ApacheHealth : MonoBehaviour
 {
-
-    int maxHealth = 100;
-    Animator animator;
-
     // Start is called before the first frame update
+    int maxHealth = 300;
+    int currentHealth;
+    Animator animator;
     void Start()
     {
+        currentHealth = maxHealth;
         animator = GetComponent<Animator>();
-        int currentHealth = maxHealth;
     }
 
     public void TakeDamage(int damage)
     {
-        maxHealth -= damage;
+        currentHealth -= damage;
 
-        if (maxHealth == 0)
+        if(currentHealth <= 0)
         {
-            animator.SetTrigger("Death");
-            // movement disable
+            animator.SetTrigger("Destroyed");
         }
     }
 }

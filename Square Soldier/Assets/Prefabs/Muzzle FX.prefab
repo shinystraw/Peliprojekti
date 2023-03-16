@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 8016058939348546183}
   - component: {fileID: 5071770206341016736}
-  - component: {fileID: 770006900294379453}
   - component: {fileID: 6884462712901667520}
   - component: {fileID: 4716768909002147554}
+  - component: {fileID: 3416941896786829067}
   m_Layer: 0
   m_Name: Muzzle FX
   m_TagString: Untagged
@@ -87,18 +87,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &770006900294379453
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8384559443229975354}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb46834d3fab8b443bff3ab0079deb27, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!50 &6884462712901667520
 Rigidbody2D:
   serializedVersion: 4
@@ -140,3 +128,15 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+--- !u!114 &3416941896786829067
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8384559443229975354}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 628e9157064320241a127bd6cad5400e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

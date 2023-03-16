@@ -28,5 +28,11 @@ public class Projectile : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        if(collision.gameObject.layer == 8)
+        {
+            collision.GetComponent<ApacheHealth>().TakeDamage(25);
+            Destroy(gameObject);
+        }
     }
 }
