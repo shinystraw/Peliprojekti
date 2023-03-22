@@ -1,5 +1,5 @@
 # Peliprojekti
-Peliohjelmointi 1 kurssin pelattava demo.
+Koulun peliohjelmointi kurssissa tehtävä pelidemo.
 
 Peli on Heliattack 3 inspiroitu Shoot 'em up peli.
 
